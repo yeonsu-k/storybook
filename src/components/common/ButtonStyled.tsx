@@ -1,4 +1,4 @@
-import { colorPalette as palette } from "../../styles/colorPalette";
+import palette from "../../styles/colorPalette";
 import Button from "@mui/material/Button";
 
 interface Props {
@@ -10,7 +10,7 @@ interface Props {
   onClick?: () => void | undefined;
 }
 
-export const ButtonStyled = ({ label, color, width,icon, ...rest }: Props) => {
+export const ButtonStyled = ({ label, color, width, icon, ...rest }: Props) => {
   const style = {
     background: color === "blue" ? palette.blue_4 : palette.sky_1,
     color: color === "blue" ? palette.white : palette.black,
@@ -18,12 +18,20 @@ export const ButtonStyled = ({ label, color, width,icon, ...rest }: Props) => {
     padding: "0.5rem 1.5rem",
     width: width,
   };
-  // const outline = color === "sky" ?  "outlined": "text";
   return (
     <Button style={style} startIcon={icon} {...rest}>
       {label}
     </Button>
   );
+};
+
+ButtonStyled.defaultProps = {
+  label: "BUTTON",
+  color: "blue",
+  width: "",
+  icon: "",
+  disabled: false,
+  onClick: undefined,
 };
 
 export default ButtonStyled;

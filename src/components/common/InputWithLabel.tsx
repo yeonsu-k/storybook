@@ -1,10 +1,7 @@
 import * as React from "react";
 import TextField from "@mui/material/TextField";
 
-import {
-  FormControl,
-  FormHelperText,
-} from "@mui/material";
+import { FormControl, FormHelperText } from "@mui/material";
 import styled from "styled-components";
 import { colorPalette as palette } from "../../styles/colorPalette";
 
@@ -45,22 +42,27 @@ const InputWithLabel = ({
   <Wrapper>
     <FormControl sx={{ width: "100%", height: "100%" }}>
       <InputStyle
-        size={size? size: "small"}
+        size={size ? size : "small"}
         placeholder={placeholder}
         {...rest}
         rows={rows}
       />
     </FormControl>
-    {textBool && 
+    {textBool &&
       (helperText ? (
         <FormHelperText disabled variant="filled">
           {helperText}
         </FormHelperText>
       ) : (
-        <p style={{ margin: `21px` }}/>
-      ))
-    }
+        <p style={{ margin: `21px` }} />
+      ))}
   </Wrapper>
 );
+
+InputWithLabel.defaultProps = {
+  name: "input이름",
+  placeholder: "input설명",
+  type: "text",
+};
 
 export default InputWithLabel;

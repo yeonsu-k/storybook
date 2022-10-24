@@ -1,16 +1,16 @@
-import * as React from 'react';
-import clsx from 'clsx';
-import { styled } from '@mui/system';
+import * as React from "react";
+import clsx from "clsx";
+import { styled } from "@mui/system";
 import { useSwitch, UseSwitchParameters } from "@mui/base/SwitchUnstyled";
 import { colorPalette as palette } from "../../styles/colorPalette";
 
 const grey = {
-  400: '#BFC7CF',
-  500: '#AAB4BE',
-  600: '#6F7E8C',
+  400: "#BFC7CF",
+  500: "#AAB4BE",
+  600: "#6F7E8C",
 };
 
-const BasicSwitchRoot = styled('span')(
+const BasicSwitchRoot = styled("span")(
   ({ theme }) => `
   font-size: 0;
   position: relative;
@@ -18,7 +18,7 @@ const BasicSwitchRoot = styled('span')(
   width: 40px;
   height: 20px;
   margin: 10px;
-  background: ${theme.palette.mode === 'dark' ? grey[600] : grey[400]};
+  background: ${theme.palette.mode === "dark" ? grey[600] : grey[400]};
   border-radius: 10px;
   cursor: pointer;
 
@@ -28,12 +28,12 @@ const BasicSwitchRoot = styled('span')(
   }
 
   &.Switch-checked {
-    background: ${palette.purlue_2};
+    background: ${palette.blue_3};
   }
-  `,
+  `
 );
 
-const BasicSwitchInput = styled('input')`
+const BasicSwitchInput = styled("input")`
   cursor: inherit;
   position: absolute;
   width: 100%;
@@ -45,7 +45,7 @@ const BasicSwitchInput = styled('input')`
   margin: 0;
 `;
 
-const BasicSwitchThumb = styled('span')`
+const BasicSwitchThumb = styled("span")`
   display: block;
   width: 14px;
   height: 14px;
@@ -64,7 +64,7 @@ const BasicSwitchThumb = styled('span')`
   &.Switch-checked {
     left: 22px;
     top: 3px;
-    background-color: #fff;
+    background-color: ${palette.purple_1};
   }
 `;
 
@@ -72,9 +72,9 @@ function BasicSwitch(props: UseSwitchParameters) {
   const { getInputProps, checked, disabled, focusVisible } = useSwitch(props);
 
   const stateClasses = {
-    'Switch-checked': checked,
-    'Switch-disabled': disabled,
-    'Switch-focusVisible': focusVisible,
+    "Switch-checked": checked,
+    "Switch-disabled": disabled,
+    "Switch-focusVisible": focusVisible,
   };
 
   return (
@@ -85,10 +85,34 @@ function BasicSwitch(props: UseSwitchParameters) {
   );
 }
 
-export default function UseSwitchesBasic() {
+interface Props {
+  label: string;
+  location?: "left" | "center" | "right";
+  onClick?: React.MouseEventHandler<HTMLButtonElement> | undefined;
+}
+
+export const UseSwitchesBasic = ({ label, location, onClick }: Props) => {
   return (
-    <div>
-      <BasicSwitch />
+    <div
+      style={{
+        display: "flex",
+        justifyContent: location,
+        textAlign: "center",
+        alignItems: "center",
+      }}
+    >
+      <span onClick={onClick}>
+        <BasicSwitch />
+      </span>
+      <span style={{ paddingBottom: "6px" }}>{label}</span>
     </div>
   );
-}
+};
+
+UseSwitchesBasic.defaultProps = {
+  label: "스위치명",
+  location: "center",
+  onClick: undefined,
+};
+
+export default UseSwitchesBasic;

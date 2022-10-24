@@ -36,11 +36,15 @@ interface Props {
   name: string;
   checked: boolean;
   disabled?: boolean;
-  onChange: ((event: React.ChangeEvent<HTMLInputElement>, checked: boolean) => void) | undefined;
+  onChange:
+    | ((event: React.ChangeEvent<HTMLInputElement>, checked: boolean) => void)
+    | undefined;
 }
 
 const SwitchButton = ({ label, ...rest }: Props) => {
-  return <FormControlLabel control={<SwitchCustom {...rest}/>} label={label} />;
+  return (
+    <FormControlLabel control={<SwitchCustom {...rest} />} label={label} />
+  );
 };
 
 export default SwitchButton;
