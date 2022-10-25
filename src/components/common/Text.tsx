@@ -8,11 +8,21 @@ interface Props {
   underline?: boolean;
 }
 
-export const Text =({ children, color, italic, underline, ...props }: Props) =>{
+export const Text = ({
+  children,
+  color,
+  italic,
+  underline,
+  ...props
+}: Props) => {
   const style = {
     color: color,
     fontStyle: italic ? "italic" : "normal",
     textDecoration: underline ? "underline" : "none",
   };
-  return <span style={style} {...props}>{children}</span>;
-}
+  return (
+    <span style={style} {...props}>
+      {children}
+    </span>
+  );
+};

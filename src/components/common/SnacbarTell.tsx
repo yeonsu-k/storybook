@@ -4,7 +4,7 @@ import { Alert, Snackbar } from "@mui/material";
 interface inputInfo {
   message: string;
   open: boolean;
-  type: "error"|"success";
+  type: "error" | "success";
   setOpen: (value: React.SetStateAction<boolean>) => void;
 }
 

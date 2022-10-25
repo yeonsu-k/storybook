@@ -24,8 +24,11 @@ function App() {
 
   return (
     <div className="App">
+      <h3>Text &nbsp;&nbsp;&nbsp;&nbsp;</h3>
       <Text children={"Hello"} color="red" />
+      <hr />
 
+      <h3>Button &nbsp;&nbsp;&nbsp;&nbsp;</h3>
       <Button
         label="Button"
         color="blue"
@@ -33,23 +36,12 @@ function App() {
         onClick={() => console.log("클릭함")}
       />
       <Button />
-
+      <hr />
+      <h3>Input &nbsp;&nbsp;&nbsp;&nbsp;</h3>
       <Input name="Input" placeholder="Input테스트" />
       <Input />
-
-      <FormControl component="fieldset" variant="standard">
-        <FormGroup>
-          <UseSwitchButton
-            label="블로그 로고"
-            onClick={() => {
-              setState({ ...state, logo: !state.logo });
-            }}
-          />
-          <UseSwitchButton label="프로필" />
-          <UseSwitchButton label="카테고리" />
-        </FormGroup>
-      </FormControl>
-
+      <hr />
+      <h3>SwitchButton1 &nbsp;&nbsp;&nbsp;&nbsp;</h3>
       <FormControl component="fieldset" variant="standard">
         <FormGroup>
           <SwitchButton
@@ -70,6 +62,20 @@ function App() {
             onChange={handleChange}
             name="category"
           />
+        </FormGroup>
+      </FormControl>
+      <hr />
+      <h3>SwitchButton2 &nbsp;&nbsp;&nbsp;&nbsp;</h3>
+      <FormControl component="fieldset" variant="standard">
+        <FormGroup>
+          <UseSwitchButton
+            label="블로그 로고"
+            onClick={() => {
+              setState({ ...state, logo: !state.logo });
+            }}
+          />
+          <UseSwitchButton label="프로필" />
+          <UseSwitchButton label="카테고리" />
         </FormGroup>
       </FormControl>
     </div>
