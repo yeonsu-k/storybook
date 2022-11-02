@@ -1,11 +1,10 @@
 import React from "react";
 import "./App.css";
-import Button from "./components/common/ButtonStyled";
 import CheckIcon from "@mui/icons-material/Check";
-import { Text } from "./components/common/Text";
-import Input from "./components/common/InputWithLabel";
-import UseSwitchButton from "./components/common/BSwitchButton";
-import SwitchButton from "./components/common/SwitchButton";
+import Text from "./components/Text";
+import Input from "./components/Input";
+import Button from "./components/Button";
+import SwitchButton from "./components/SwitchButton";
 import { FormControl, FormGroup } from "@mui/material";
 
 function App() {
@@ -25,7 +24,7 @@ function App() {
   return (
     <div className="App">
       <h3>Text &nbsp;&nbsp;&nbsp;&nbsp;</h3>
-      <Text children={"Hello"} color="red" />
+      <Text value={"Hello"} type="text" />
       <hr />
 
       <h3>Button &nbsp;&nbsp;&nbsp;&nbsp;</h3>
@@ -65,19 +64,6 @@ function App() {
         </FormGroup>
       </FormControl>
       <hr />
-      <h3>SwitchButton2 &nbsp;&nbsp;&nbsp;&nbsp;</h3>
-      <FormControl component="fieldset" variant="standard">
-        <FormGroup>
-          <UseSwitchButton
-            label="블로그 로고"
-            onClick={() => {
-              setState({ ...state, logo: !state.logo });
-            }}
-          />
-          <UseSwitchButton label="프로필" />
-          <UseSwitchButton label="카테고리" />
-        </FormGroup>
-      </FormControl>
     </div>
   );
 }

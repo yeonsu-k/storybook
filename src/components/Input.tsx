@@ -1,16 +1,7 @@
 import * as React from "react";
-import TextField from "@mui/material/TextField";
-
-import { FormControl, FormHelperText } from "@mui/material";
-import styled from "styled-components";
-import { colorPalette as palette } from "../../styles/colorPalette";
-
-// 두개가 함께 있을땐 상단 (그 사이) 에 여백을 준다
-const Wrapper = styled.div`
-  & + & {
-    margin-top: 0.1rem;
-  }
-`;
+import { TextField, FormControl, FormHelperText } from "@mui/material";
+import { styled } from "@mui/material/styles";
+import palette from "./styles/colorPalette";
 
 interface inputInfo {
   name: string;
@@ -26,12 +17,12 @@ interface inputInfo {
   onChange?: React.ChangeEventHandler<HTMLInputElement> | undefined;
 }
 
-const InputStyle = styled(TextField)(({ theme }) => ({
+const InputStyle = styled(TextField)(() => ({
   backgroundColor: palette.gray,
 }));
 
 // rest 쪽에는 onChange, type, name, value, placeholder 등의 input 에서 사용 하는 값들을 넣어줄수 있다.
-const InputWithLabel = ({
+const Input = ({
   placeholder,
   textBool,
   helperText,
@@ -39,7 +30,7 @@ const InputWithLabel = ({
   size,
   ...rest
 }: inputInfo) => (
-  <Wrapper>
+  <div>
     <FormControl sx={{ width: "100%", height: "100%" }}>
       <InputStyle
         size={size ? size : "small"}
@@ -56,13 +47,13 @@ const InputWithLabel = ({
       ) : (
         <p style={{ margin: `21px` }} />
       ))}
-  </Wrapper>
+  </div>
 );
 
-InputWithLabel.defaultProps = {
+Input.defaultProps = {
   name: "input이름",
   placeholder: "input설명",
   type: "text",
 };
 
-export default InputWithLabel;
+export default Input;
